@@ -1,10 +1,10 @@
 const { Command } = require('commander');
 const fs = require('fs');
 const path = require('path');
-
+const sqlite3=require('sqlite3')
 const program = new Command();
 const TASKS_FILE = path.join(__dirname, 'tasks.json');
-
+const db = new sqlite3.Database("task.db", sqlite3.OPEN_READWRITE);
 // Load tasks
 const loadTasks = () => {
   if (!fs.existsSync(TASKS_FILE)) return [];
