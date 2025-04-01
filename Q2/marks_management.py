@@ -154,7 +154,7 @@ def student_menu():
         if choice != "yes":
             break
 
-# Main menu
+# main funcion
 def main():
     init_db()
     
