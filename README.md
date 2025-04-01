@@ -42,12 +42,12 @@ To access the individual projects, follow these steps:
 1. **Clone the Repository**:
    Open your terminal and run the following command to clone the repository:
    ```bash
-   git clone https://github.com/hembramsushar/SE-lab-2025-A2-04-Repo.git
+   git clone https://github.com/hembramsushar/SE_Lab_2025_A2_04_Repo.git
    ```
 2. **Navigate to the Project Directory**:
    Change into the project directory:
     ```bash
-    cd SE-lab-2025-A2-04-Repo
+    cd SE_Lab_2025_A2_04_Repo
     ```
 3. **Checkout the Desired Branch**:
    Use the following commands to switch to the branch of the project you want to work on:
