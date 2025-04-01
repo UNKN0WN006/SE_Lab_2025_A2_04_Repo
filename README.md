@@ -45,7 +45,7 @@ inventory_management_system/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/hembramsushar/SE-lab-2025-A2-04-Repo.git
+   git clone https://github.com/hembramsushar/SE_Lab_2025_A2_04_Repo.git
    cd inventory_management_system
    ```
 
