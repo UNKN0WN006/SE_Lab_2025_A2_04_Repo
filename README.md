@@ -119,7 +119,7 @@ Here are some potential enhancements that could be made to the Inventory Managem
 
 For any questions or feedback, please contact:
 
-- **Name**: [hembramsushar@gmail.com](mailto:hembramsushar@gmail.com)
+- **Name**: [hembramsushar@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=hembramsushar@gmail.com&cc=anaysaha2005@gmail.com,popu.2003.pd@gmail.com&su=Queries%20related%20to%20the%20Repository%20%22SE_Lab_2025_A2_04_Repo%22)
 - **GitHub Profile**: [Sushar Hembram](https://github.com/hembramsushar)
 
 Thank you for using the Inventory Management System!
