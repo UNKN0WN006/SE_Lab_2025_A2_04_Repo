@@ -27,7 +27,6 @@ program
           }`
         );
       });
-      console.log(tasks);
     } catch (e) {
       console.log(e);
     }
