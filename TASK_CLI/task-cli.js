@@ -1,3 +1,21 @@
+/*        IMPORTANT
+    CREATE A package.json file and insert:
+    
+    {
+    "dependencies": {
+        "commander": "^13.1.0",
+        "sqlite3": "^5.1.7"
+    },
+    "scripts": {
+      "start": "node task-cli.js"
+    }
+  }
+    ONLY THEN IT WILL WORK
+    INSTALL npm PACKAGE
+    USE npm install COMMAND FIRST
+    THEN INSTALL NODEJS
+    USE node <filename> to start
+*/
 const { Command } = require("commander");
 const program = new Command();
 const sqlite3 = require('sqlite3')
