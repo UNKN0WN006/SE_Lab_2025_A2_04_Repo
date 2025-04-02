@@ -1,6 +1,37 @@
 const { Command } = require("commander");
-const { execute, fetchAll ,fetchFirst} = require("./sql.js");
 const program = new Command();
+const sqlite3 = require('sqlite3')
+//Initialize table in Database if not exists
+const execute = async (sql) => {
+  const db = new sqlite3.Database("task.db", sqlite3.OPEN_READWRITE);
+  return new Promise((resolve, reject) => {
+    db.exec(sql, (err) => {
+      if (err) reject(err);
+      resolve();
+    });
+    db.close();
+  });
+};
+const fetchAll = async (sql) => {
+  const db = new sqlite3.Database("task.db", sqlite3.OPEN_READWRITE);
+  return new Promise((resolve, reject) => {
+    db.all(sql, (err, rows) => {
+      if (err) reject(err);
+      resolve(rows);
+    });
+    db.close();
+  });
+};
+const fetchFirst = async (sql) => {
+  const db = new sqlite3.Database("task.db", sqlite3.OPEN_READWRITE);
+  return new Promise((resolve, reject) => {
+    db.get(sql, (err, row) => {
+      if (err) reject(err);
+      resolve(row);
+    });
+    db.close();
+  });
+};
 // Add Task
 program
   .command("add <task>")
@@ -12,6 +43,19 @@ program
       console.log(e);
     }
   });
+const main = async () => {
+  try {
+    await execute(
+      `CREATE TABLE IF NOT EXISTS tasks (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          task TEXT NOT NULL,
+          completed BOOLEAN  DEFAULT FALSE)`
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+main();
 
 // List Tasks
 program
@@ -22,8 +66,7 @@ program
       const tasks = await fetchAll(`SELECT * FROM TASKS`);
       tasks.forEach((t) => {
         console.log(
-          `Id:${t.id} | Task: ${t.task} | Checked ${
-            t.completed == 1 ? "✔" : "✖"
+          `Id:${t.id} | Task: ${t.task} | Checked ${t.completed == 1 ? "✔" : "✖"
           }`
         );
       });
@@ -50,29 +93,29 @@ program
 program
   .command("edit <id> <newTask>")
   .description("Edit an existing task")
-  .action(async(id, newTask) => {
+  .action(async (id, newTask) => {
     try {
-        await execute(`UPDATE tasks SET task="${newTask}",completed=0 WHERE id=${id}`).then(() =>
-          console.log("Task Edited!!!")
-        );
-      } catch (e) {
-        console.log(e);
-      }
+      await execute(`UPDATE tasks SET task="${newTask}",completed=0 WHERE id=${id}`).then(() =>
+        console.log("Task Edited!!!")
+      );
+    } catch (e) {
+      console.log(e);
+    }
   });
 //Delete Task
 program
   .command("delete <id>")
   .description("Delete an existing task")
-  .action(async(id) => {
+  .action(async (id) => {
     try {
-        const task=await fetchFirst(`SELECT * FROM TASKS WHERE id=${id}`);
-        if(!task) console.log("Task id doesn't exist!!")
-            else{
-          await execute("DELETE FROM tasks WHERE id ="+id).then(()=>console.log("Task Deleted!!!"))
-        }
-      } catch (e) {
-        console.log(e);
+      const task = await fetchFirst(`SELECT * FROM TASKS WHERE id=${id}`);
+      if (!task) console.log("Task id doesn't exist!!")
+      else {
+        await execute("DELETE FROM tasks WHERE id =" + id).then(() => console.log("Task Deleted!!!"))
       }
+    } catch (e) {
+      console.log(e);
+    }
   });
 // Run CLI
 program.parse(process.argv);
