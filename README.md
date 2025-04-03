@@ -4,43 +4,6 @@
 
 The Inventory Management System is a console-based application designed to help manage products in a store, track customer registrations, and log purchases. This system allows managers to add products, view inventory, and see customer purchase history, while customers can register, search for products, and make purchases.
 
-## Project Structure
-```bash
-inventory_management_system/
-│
-├── README.md
-├── requirements.txt
-├── main.py
-├── database.py
-├── manager.py
-├── customer.py
-├── models/
-│  ├── __init__.py
-│  ├── product.py
-│  ├── customer.py
-│  └── purchase.py
-└── utils/
-    ├── __init__.py
-    └── helpers.py
-
-```
-
-## File Descriptions
-
-- **database.py**: This file manages the SQLite database connection and defines the schema for the products, customers, and purchases tables. It includes functions to connect to the database and create necessary tables.
-
-- **main.py**: The main entry point of the application. It provides a menu for users to choose between manager and customer interfaces.
-
-- **manager.py**: Contains the `ManagerInterface` class, which allows managers to add products, view the inventory, and see customer purchases.
-
-- **customer.py**: Contains the `CustomerInterface` class, which allows customers to register, search for products, and make purchases.
-
-- **utils/__init__.py**: This file is intentionally left empty. It indicates that the `utils` directory is a package. This is a common practice in Python to allow for better organization of code.
-
-- **utils/helpers.py**: Contains utility functions that can be reused throughout the application, such as printing a formatted store header.
-
-- **requirements.txt**: This file lists the dependencies required for the project. Currently, there are no external dependencies, so it is empty. If you decide to use any external libraries in the future (e.g., for logging, testing, or database management), you can add them here.
-
 ## Installation
 
 1. Clone the repository:
