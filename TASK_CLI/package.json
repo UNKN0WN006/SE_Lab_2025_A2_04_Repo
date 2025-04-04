@@ -1,0 +1,9 @@
+{
+    "dependencies": {
+        "commander": "^13.1.0",
+        "sqlite3": "^5.1.7"
+    },
+    "scripts": {
+      "start": "node task-cli.js"
+    }
+}
